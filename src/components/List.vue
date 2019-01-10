@@ -2,16 +2,25 @@
   <main class="mdl-layout__content">
     <div class="page-content">
       <search></search>
-      <card v-for="n in 10"></card>
+      <card
+        v-for="gif in gifs"
+        :gif="gif"
+        :key="gif.id"
+      >
+      </card>
     </div>
   </main>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Search from './Search'
 import Card from './Card'
 
 export default {
+  computed: {
+    ...mapGetters(['gifs'])
+  },
   components: {
     Search,
     Card
